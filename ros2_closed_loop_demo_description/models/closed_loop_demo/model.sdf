@@ -1,0 +1,235 @@
+<sdf version='1.9'>
+  <model name='closed_loop_demo'>
+
+    <!-- Define Links -->
+
+    <link name='base_link'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <mass>10</mass>
+      </inertial>
+      <visual name='base_link_visual'>
+        <pose>0 0 0.035 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <link name='link_0'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <mass>1</mass>
+      </inertial>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06 0.06 0.06</size>
+          </box>
+        </geometry>
+        <material>
+          <diffuse>1 0.99 0 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <link name='link_1'>
+      <pose>0.25 0 0 0 0 0</pose>
+      <inertial>
+        <mass>1</mass>
+      </inertial>
+      <visual name='link_1_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.05 0.05</size>
+          </box>
+        </geometry>
+        <material>
+          <diffuse>1 0.5 0 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <link name='link_2'>
+    <inertial>
+        <mass>1</mass>
+      </inertial>
+      <pose>0.5 0 -0.25 0 0 0</pose>
+      <visual name='link_2_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.05 0.5</size>
+          </box>
+        </geometry>
+        <material>
+          <diffuse>1 0 0 1</diffuse>
+        </material>
+      </visual>
+    </link>
+
+    <link name='link_3'>
+    <inertial>
+        <mass>1</mass>
+      </inertial>
+      <pose>0 0 -0.25 0 0 0</pose>
+      <visual name='link_3_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.05 0.5</size>
+          </box>
+        </geometry>
+        <material>
+          <diffuse>0.3 1 0 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <link name='link_4'>
+    <inertial>
+        <mass>1</mass>
+      </inertial>
+      <pose>0.25 0 -0.5 0 0 0</pose>
+      <visual name='link_4_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.05 0.05</size>
+          </box>
+        </geometry>
+        <material>
+          <diffuse>0 1 0.6 1</diffuse>
+        </material>
+      </visual>
+      <visual name='link_4_visual2'>
+        <pose>0.35 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.2 0.05 0.05</size>
+          </box>
+        </geometry>
+        <material>
+          <diffuse>0 1 0.6 1</diffuse>
+        </material>
+      </visual>
+    </link>
+
+    <!-- Define Joints -->
+
+    <joint name='joint_D0' type='fixed'>
+      <child>link_0</child>
+      <parent>base_link</parent>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-2</lower>
+          <upper>2</upper>
+        </limit>
+      </axis>
+    </joint>
+    <joint name='joint_A0' type='revolute'>
+      <child>link_1</child>
+      <parent>link_0</parent>
+      <pose>-0.25 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-3</lower>
+          <upper>3</upper>
+        </limit>
+      </axis>
+    </joint>
+    <joint name='joint_A' type='revolute'>
+      <child>link_2</child>
+      <parent>link_1</parent>
+      <pose>0 0 0.25 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-3</lower>
+          <upper>3</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <joint name='joint_B0' type='revolute'>
+      <child>link_3</child>
+      <parent>link_0</parent>
+      <pose>0 0 0.25 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-3</lower>
+          <upper>3</upper>
+        </limit>
+      </axis>
+    </joint>
+    <joint name='joint_B' type='revolute'>
+      <child>link_4</child>
+      <parent>link_3</parent>
+      <pose>-0.25 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-3</lower>
+          <upper>3</upper>
+        </limit>
+      </axis>
+    </joint>
+    
+    <!-- create rotatable dummy link at Joint C position on link_4 --> 
+    <link name='dummy_link'>
+      <pose>0.5 0 -0.5 0 0 0</pose>
+       
+      <visual name='dummy_visual'>
+        <pose>0 0 0 1.57079633 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.03</radius>
+            <length>0.06</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <diffuse>0.6 0 1 1</diffuse>
+        </material>
+      </visual>
+    </link>
+    <joint name='joint_C' type='revolute'> <!-- Connect dummy_link to link_4 -->
+      <child>dummy_link</child>
+      <parent>link_4</parent>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-3</lower>
+          <upper>3</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- Create joint to World -->
+
+    <joint name="fix_base_to_world" type="fixed">
+      <parent>world</parent>
+      <child>base_link</child>
+    </joint>
+
+    <!-- Plugin to close the loop -->
+
+    <plugin filename="libgz-sim-detachable-joint-system.so" name="gz::sim::systems::DetachableJoint"> <!-- Connect link_2 to link_4 (via dummy_link) -->
+      <parent_link>link_2</parent_link>
+      <child_model>closed_loop_demo_model</child_model>
+      <child_link>dummy_link</child_link>
+
+      <attach_topic>loop/attach</attach_topic>
+      <detach_topic>loop/detach</detach_topic>
+      <output_topic>loop/state</output_topic>
+    </plugin>
+
+  </model>
+</sdf>

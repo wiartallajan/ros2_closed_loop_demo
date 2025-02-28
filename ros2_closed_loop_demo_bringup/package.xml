@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>ros2_closed_loop_demo_bringup</name>
+  <version>0.1.0</version>
+  <description>The ros2_closed_loop_demo_bringup package</description>
+
+  <!-- Maintainer --> 
+  <maintainer email="wiartalla@igmr.rwth-aachen.de">Wiartalla, Jan</maintainer>
+
+  <!-- License -->
+  <license>MIT</license>
+
+  <!-- Authors -->
+  <author email="wiartalla@igm.rwth-aachen.de">Wiartalla, Jan</author>
+  
+  <!-- Buildtool dependencies -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- General dependencies -->
+  <depend>ros2_closed_loop_demo_description</depend>
+
+  <!-- Test dependencies -->
+  <test_depend>ament_lint_auto</test_depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
