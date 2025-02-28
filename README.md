@@ -29,7 +29,7 @@ To launch the provided models, simply use the provided launch files.
 This model contains a standard five bar linkage. The axes of the closed loop are aligned with the world coordinate axis.
 
 ```bash
-ros2 launch ros2_closed_loop_demo launch_closed_loop_demo.launch.py
+ros2 launch ros2_closed_loop_demo_bringup launch_closed_loop_demo.launch.py
 ```
 
 >> This model behaves as expected: The DetachableJoint plugin keeps the kinematic loop closed and the links dangle freely.
@@ -39,7 +39,7 @@ ros2 launch ros2_closed_loop_demo launch_closed_loop_demo.launch.py
 This model contains a standard five bar linkage. But the five bar linkage is rotated around the z-axis, so that the axes of the closed loop are not aligned with the world coordinate axes anymore.
 
 ```bash
-ros2 launch ros2_closed_loop_demo launch_closed_loop_rotated.launch.py
+ros2 launch ros2_closed_loop_demo_bringup launch_closed_loop_rotated.launch.py
 ```
 
 >> This model does not behave as expected: the kinematic chain bugs around.
@@ -49,7 +49,7 @@ ros2 launch ros2_closed_loop_demo launch_closed_loop_rotated.launch.py
 This model contains a standard five bar linkage. But the five bar linkage is suspended with an additional joint aligned with the world z-axis.
 
 ```bash
-ros2 launch ros2_closed_loop_demo launch_closed_loop_addJoint.launch.py
+ros2 launch ros2_closed_loop_demo_bringup launch_closed_loop_addJoint.launch.py
 ```
 
 >> This model does not behave as expected: Gazebo crashes as soon as the vertical joint D0 is moved via the JointPositionController-Plugin in Gazebo. As long as the joint is not moved after launch, the model behaves as expected.
